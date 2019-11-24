@@ -82,8 +82,6 @@ function handleChoice() {
 
         HTMLupdateMineField(userChoice - 1, isChecked); // aggiorno il campo minato sulla pagina HTML
 
-        HTMLpositionNotClickable(userChoice - 1, fieldSizeMax); // rendo lo span appena clickato dall'utente, come non più clickabile
-
     } else {
         // l'utente ha trovato una mina
 
@@ -247,23 +245,16 @@ function HTMLenableDisableClicks(size, action) {
     for (var i = 0; i < size; i++) {
         // ciclo su tutti (size) gli span che compongono il campo minato
         if (action == enable) {
-            spansList[i].addEventListener("click", handleChoice); // al click chiamerò la funzione handleChoice()
+            spansList[i].addEventListener("click", handleChoice, {
+                once: true
+            }); // passo un oggetto come opzione,
+            // con questa opzione il listener verrà automaticamente rimosso dopo che è stato invocato 1 volta
+            // in sostanza l'elemento span (sul quale attivo l'evento click) sarà cliccabile sono una volta
+            // al click verrà chiamata la funzione handleChoice()
         } else {
             spansList[i].removeEventListener("click", handleChoice); // disabilito la chiamata alla funzione handleChoice()
             spansList[i].style.cursor = "default"; // disabilito il cursore "a manina" su tutto il campo minato
 
         }
     }
-}
-
-function HTMLpositionNotClickable(spanIndex) {
-
-    // UTILIZZO:
-    // disabilito l'evento click solamente sullo span indicizzato da spanIndex
-    // ricevo in ingresso l'indice (spanIndex) dello span sul quale voglio disabilitare l'evento click
-
-    var spansList = document.getElementsByTagName("span"); // mi creo la lista degli span presenti sulla pagina HTML
-
-    // l'evento click sull'elemento span non invoca più la funzione handleChoice()
-    spansList[spanIndex].removeEventListener("click", handleChoice);
 }
