@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    height: 100%;
+    padding: 10px 0;
+}
+
+#mineFieldContainer {
+    border: 1px solid #000;
+    display: inline-block;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+span {
+    display: inline-block;
+    border: 1px solid #000;
+    background-color: lightyellow;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    padding-top: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+sub {
+    font-size: 8px;
+}
+
+.checked {
+    background-color: lightgreen;
+    cursor: default;
+}
+
+.bomb {
+    background-color: coral;
+    cursor: default;
+}
+
+#score {
+    color: mediumseagreen;
+}
+
+#maxScore {
+    font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#scoreContainer span {
+    background-color: inherit;
+    border: none;
+    display: inline;
+    font-weight: bold;
+}
